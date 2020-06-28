@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if params[:content_key]
+      @articles = Article.where('content LIKE ?', "%#{params[:content_key]}%")
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1
@@ -69,6 +73,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:content)
+      params.require(:article).permit(:content, :name, :feeling)
     end
 end
