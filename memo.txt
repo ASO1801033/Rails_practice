@@ -1,0 +1,5 @@
+お店の管理
+DBカラム：name(string), category(string), adress(string)
+
+カテゴリーの管理
+DBカラム：name(string)
